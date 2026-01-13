@@ -1,0 +1,21 @@
+[project]
+name = "superyou"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "llama-index-core>=0.10.0",
+    "llama-index-embeddings-ollama>=0.1.0",
+    "llama-index-llms-openai>=0.6.12",
+    "llama-index-vector-stores-postgres>=0.1.0",
+    "ollama>=0.1.0",
+    "openai>=1.0.0",
+    "psycopg2-binary>=2.9.0",
+    "pymupdf>=1.26.7",
+    "python-dotenv>=1.0.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
