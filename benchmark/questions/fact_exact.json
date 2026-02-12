@@ -1,0 +1,312 @@
+{
+  "benchmark_type": "fact_exact",
+  "description": "Test system's ability to extract exact factual information from the document",
+  "document": "output.md",
+  "questions": [
+    {
+      "id": "fact_001",
+      "type": "fact_exact",
+      "question": "成龙飞总共给了多少钱给陈明飞用于办理学位？",
+      "expected": {
+        "amount_total": 42000
+      },
+      "required_evidence": [
+        {
+          "page": 2,
+          "must_include": "42000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "numeric_exact": true,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "monetary",
+        "tags": ["金额", "收款", "学位办理"]
+      }
+    },
+    {
+      "id": "fact_002",
+      "type": "fact_exact",
+      "question": "陈明飞已经退还了多少钱给成龙飞？",
+      "expected": {
+        "amount_total": 18000,
+        "amount_breakdown": [
+          {"amount": 15000, "description": "2020年8月31日现金退款"},
+          {"amount": 3000, "description": "2020年11月24日微信退款"}
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "15000元现金",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "3000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "numeric_exact": true,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "monetary",
+        "tags": ["金额", "退款"]
+      }
+    },
+    {
+      "id": "fact_003",
+      "type": "fact_exact",
+      "question": "陈明飞至今还欠成龙飞多少钱？",
+      "expected": {
+        "amount_total": 24000
+      },
+      "required_evidence": [
+        {
+          "page": 2,
+          "must_include": "还欠24000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "numeric_exact": true,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "monetary",
+        "tags": ["金额", "欠款"]
+      }
+    },
+    {
+      "id": "fact_004",
+      "type": "fact_exact",
+      "question": "陈明飞是哪年哪月哪日出生的？",
+      "expected": {
+        "date": "1976-09-01"
+      },
+      "required_evidence": [
+        {
+          "page": 1,
+          "must_include": "1976年09月01日出生",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "date_exact": true,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "temporal",
+        "tags": ["日期", "个人信息"]
+      }
+    },
+    {
+      "id": "fact_005",
+      "type": "fact_exact",
+      "question": "陈明飞的身份证号码是多少？",
+      "expected": {
+        "text_answer": "441811197609016414"
+      },
+      "required_evidence": [
+        {
+          "page": 1,
+          "must_include": "441811197609016414",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "factual",
+        "tags": ["个人信息", "身份证"]
+      }
+    },
+    {
+      "id": "fact_006",
+      "type": "fact_exact",
+      "question": "陈明飞的联系电话是多少？",
+      "expected": {
+        "text_answer": "13750173434"
+      },
+      "required_evidence": [
+        {
+          "page": 1,
+          "must_include": "13750173434",
+          "section": "header",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "factual",
+        "tags": ["联系方式", "电话"]
+      }
+    },
+    {
+      "id": "fact_007",
+      "type": "fact_exact",
+      "question": "陈明飞是否认罪认罚？",
+      "expected": {
+        "boolean_answer": false,
+        "text_answer": "不认罪认罚"
+      },
+      "required_evidence": [
+        {
+          "page": 1,
+          "must_include": "我觉得自己没有犯法的，我不需要认罪认罚",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "factual",
+        "tags": ["认罪认罚", "程序"]
+      }
+    },
+    {
+      "id": "fact_008",
+      "type": "fact_exact",
+      "question": "成龙飞第一次给钱的具体日期是哪一天？分别以现金和微信方式给了多少钱？",
+      "expected": {
+        "date": "2020-06-05",
+        "amount_breakdown": [
+          {"amount": 17000, "description": "现金方式"},
+          {"amount": 13000, "description": "微信方式"}
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "2020年6月5日",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "现金方式给了我17000元现金",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "微信方式转账了13000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "date_exact": true,
+        "numeric_exact": true,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "temporal",
+        "tags": ["日期", "金额", "转账"]
+      }
+    },
+    {
+      "id": "fact_009",
+      "type": "fact_exact",
+      "question": "陈明飞是在哪里被传唤的？请提供具体地址。",
+      "expected": {
+        "entity": "广东省清远市清城区朝阳花园B栋902号房"
+      },
+      "required_evidence": [
+        {
+          "page": 2,
+          "must_include": "广东省清远市清城区朝阳花园B栋902号房",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "factual",
+        "tags": ["地点", "传唤"]
+      }
+    },
+    {
+      "id": "fact_010",
+      "type": "fact_exact",
+      "question": "讯问是在哪个派出所进行的？讯问室编号是多少？",
+      "expected": {
+        "entity": "清远市公安局松岗派出所",
+        "text_answer": "办案区讯问室 R021000 讯 03-2"
+      },
+      "required_evidence": [
+        {
+          "page": 1,
+          "must_include": "清远市公安局松岗派出所",
+          "section": "header",
+          "is_critical": true
+        },
+        {
+          "page": 1,
+          "must_include": "R021000 讯 03-2",
+          "section": "header",
+          "is_critical": false
+        }
+      ],
+      "scoring": {
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "category": "factual",
+        "tags": ["地点", "程序"]
+      }
+    }
+  ],
+  "evaluation_criteria": {
+    "description": "Evaluation criteria for fact-exact type questions",
+    "passing_threshold": 1.0,
+    "scoring_breakdown": {
+      "exact_match": {
+        "weight": 0.7,
+        "description": "Exact match of numeric or factual answer"
+      },
+      "citation_correctness": {
+        "weight": 0.3,
+        "description": "Citation points to correct page and includes required text"
+      }
+    }
+  }
+}

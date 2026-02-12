@@ -1,0 +1,411 @@
+{
+  "benchmark_type": "evidence_set",
+  "description": "Test system's ability to retrieve and aggregate multiple relevant evidence pieces",
+  "document": "output.md",
+  "questions": [
+    {
+      "id": "evidence_001",
+      "type": "evidence_set",
+      "question": "有哪些证据表明陈明飞承诺退款给成龙飞？",
+      "expected": {
+        "evidence_count_min": 2,
+        "key_points": [
+          "承诺如果办理不成功会将42000元退回给成龙飞",
+          "2020年8月30日左右告知无法办理并承诺退款"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 3,
+          "must_include": "办理不成功会将42000元退回给成龙飞",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "2020年8月30日左右",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.8,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["退款", "承诺"]
+      }
+    },
+    {
+      "id": "evidence_002",
+      "type": "evidence_set",
+      "question": "有哪些证据表明陈明飞已经退款给成龙飞？请列出具体的退款记录。",
+      "expected": {
+        "evidence_count_min": 2,
+        "key_points": [
+          "2020年8月31日当面退了15000元现金",
+          "2020年11月24日左右通过微信方式退还了3000元"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "2020年8月31日",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "15000元现金",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "2020年11月24日",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "微信方式退还了3000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 1.0,
+        "evidence_precision_min": 0.8,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["退款", "金额", "日期"]
+      }
+    },
+    {
+      "id": "evidence_003",
+      "type": "evidence_set",
+      "question": "有哪些证据涉及成龙飞向陈明飞支付款项的记录？请列出所有支付方式和金额。",
+      "expected": {
+        "evidence_count_min": 4,
+        "key_points": [
+          "2020年6月5日现金方式给了17000元",
+          "2020年6月5日微信方式转账了13000元",
+          "2020年8月5日微信方式转账了6000元",
+          "2020年8月10日微信方式转账了6000元"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "2020年6月5日",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "现金方式给了我17000元",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "微信方式",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "13000",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "6000",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": false
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.9,
+        "evidence_precision_min": 0.8,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "category": "evidence_aggregation",
+        "tags": ["支付记录", "金额", "微信转账"]
+      }
+    },
+    {
+      "id": "evidence_004",
+      "type": "evidence_set",
+      "question": "有哪些证据涉及陈明飞说明资金用途的情况？",
+      "expected": {
+        "evidence_count_min": 1,
+        "key_points": [
+          "42000元用于请客送礼帮助成龙飞办理小孩学位",
+          "具体请了谁吃饭、在什么地方吃饭、买了什么礼物给谁、在什么地方买礼物都忘记了",
+          "忘记是通过微信方式还是现金方式支付这些费用"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "用于请客送礼",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "都忘记了",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.8,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["资金用途"]
+      }
+    },
+    {
+      "id": "evidence_005",
+      "type": "evidence_set",
+      "question": "有哪些证据表明陈明飞尝试联系和寻找成龙飞退款？",
+      "expected": {
+        "evidence_count_min": 3,
+        "key_points": [
+          "联系过成龙飞但被拉黑",
+          "到首创造型理发店找过成龙飞",
+          "每次过去成龙飞都不在该店铺",
+          "最后一次到该店铺找成龙飞是在2022年9月份"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 4,
+          "must_include": "联系过成龙飞",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "拉黑",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "首创造型理发店",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 4,
+          "must_include": "2022年9月份",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": false
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.8,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["联系", "寻找", "退款"]
+      }
+    },
+    {
+      "id": "evidence_006",
+      "type": "evidence_set",
+      "question": "有哪些证据涉及陈明飞和成龙飞的关系认识过程？",
+      "expected": {
+        "evidence_count_min": 3,
+        "key_points": [
+          "通过陈泳文介绍认识",
+          "2020年6月4日晚上在宵夜店见面",
+          "添加了成龙飞的微信",
+          "商谈办理小孩入学学位事宜"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 3,
+          "must_include": "陈泳文",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "2020年6月4日",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "宵夜店",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "微信",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": false
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.75,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["人物关系", "认识过程"]
+      }
+    },
+    {
+      "id": "evidence_007",
+      "type": "evidence_set",
+      "question": "有哪些证据说明陈明飞能够办理小孩学位的信息来源？",
+      "expected": {
+        "evidence_count_min": 3,
+        "key_points": [
+          "吃宵夜时认识'傻全'",
+          "'傻全'说可以帮忙办理小孩入读小学的学位",
+          "办理学位费用是成功办理后才收钱",
+          "陈泳文曾通过陈明飞找'傻全'办理外甥学位（未成功）"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 3,
+          "must_include": "傻全",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "可以帮忙办理小孩入读小学的学位",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 3,
+          "must_include": "成功办理小孩入读小学之后才收钱",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.8,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["学位办理", "信息来源"]
+      }
+    },
+    {
+      "id": "evidence_008",
+      "type": "evidence_set",
+      "question": "有哪些证据说明陈明飞不需要承担刑责或认为自己没有违法？",
+      "expected": {
+        "evidence_count_min": 2,
+        "key_points": [
+          "不觉得自己是诈骗",
+          "有找过成龙飞也尝试将钱归还给成龙飞",
+          "承诺退款但对方拉黑"
+        ]
+      },
+      "required_evidence": [
+        {
+          "page": 5,
+          "must_include": "我不觉得自己是诈骗",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        },
+        {
+          "page": 5,
+          "must_include": "尝试将钱归还给成龙飞",
+          "section": "qa_pair",
+          "speaker": "answer",
+          "is_critical": true
+        }
+      ],
+      "scoring": {
+        "evidence_recall_min": 0.8,
+        "evidence_precision_min": 0.7,
+        "citation_required": true
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "category": "evidence_aggregation",
+        "tags": ["主观陈述", "法律责任"]
+      }
+    }
+  ],
+  "evaluation_criteria": {
+    "description": "Evaluation criteria for evidence set type questions",
+    "scoring_metrics": {
+      "evidence_recall": {
+        "description": "Percentage of key evidence pieces retrieved",
+        "calculation": "retrieved_key_evidence / total_key_evidence",
+        "passing_threshold": 0.8
+      },
+      "evidence_precision": {
+        "description": "Percentage of retrieved evidence that is relevant",
+        "calculation": "relevant_evidence / total_retrieved",
+        "passing_threshold": 0.7
+      },
+      "citation_coverage": {
+        "description": "Whether all key points have proper citations",
+        "calculation": "cited_key_points / total_key_points",
+        "passing_threshold": 0.8
+      }
+    }
+  }
+}
